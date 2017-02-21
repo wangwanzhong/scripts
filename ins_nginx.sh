@@ -1,5 +1,5 @@
 #!/bin/bash
-ins_nginx.sh
+# version: nginx-1.9.9
 
 set -e
 
