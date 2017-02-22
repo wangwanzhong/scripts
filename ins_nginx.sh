@@ -3,7 +3,7 @@
 
 set -e
 
-yum -y install pcre-devel openssl-devel
+yum -y install gcc-c++ make pcre-devel openssl-devel
 
 
 wget http://nginx.org/download/nginx-1.9.9.tar.gz
