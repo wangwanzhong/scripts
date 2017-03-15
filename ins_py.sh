@@ -3,7 +3,7 @@
 
 set -e
 
-yumm install -y gcc-c++
+yum install -y gcc-c++
 
 # requirement packages HTTPSHandler、zlib、pysqlite
 yum install -y zlib-devel openssl-devel sqlite-devel readline-devel
