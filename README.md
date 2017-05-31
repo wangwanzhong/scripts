@@ -38,3 +38,11 @@
 # nginx -t
 # nginx 
 ```
+
+## python
+
+- default version 3.5.2
+
+```
+# wget https://raw.githubusercontent.com/wangwanzhong/scripts/master/python/ins_py.sh -O -| /bin/bash
+```
