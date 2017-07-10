@@ -1,18 +1,25 @@
 #!/bin/bash
-# version: nginx-1.9.9
+# version: nginx-${version}
 
 set -e
+
+if [ -z "$1" ];then
+    version="1.9.9"
+else
+    version=$1
+fi
+
 
 # requirement
 
 /usr/bin/id www || useradd -M www
 
 yum -y install gcc-c++ make pcre-devel openssl-devel
-[ -f "nginx-1.9.9.tar.gz" ] || wget http://nginx.org/download/nginx-1.9.9.tar.gz
+[ -f "nginx-${version}.tar.gz" ] || wget http://nginx.org/download/nginx-${version}.tar.gz
 
 # install
-tar zxf nginx-1.9.9.tar.gz
-cd nginx-1.9.9
+tar zxf nginx-${version}.tar.gz
+cd nginx-${version}
 ./configure --prefix=/opt/nginx --user=www --with-http_stub_status_module --with-http_realip_module --with-http_gzip_static_module --with-http_ssl_module
 make && make install
 
