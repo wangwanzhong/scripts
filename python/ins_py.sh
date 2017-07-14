@@ -8,9 +8,9 @@ if [ -f /etc/redhat-release ]; then
   yum install -y gcc-c++ zlib-devel openssl-devel sqlite-devel readline-devel
 fi
 
-if [ -z "$(uname -a|grep centos)" ]; then
-  sudo apt-get install -y build-essential zlib1g zlib1g-dev openssl libssl-dev sqlite3 libsqlite3-dev   libreadline6-dev libbz2-dev libxml2-dev libxslt1 libffi-dev libssl-dev
-fi
+#if [ -z "$(uname -a|grep centos)" ]; then
+#  sudo apt-get install -y build-essential zlib1g zlib1g-dev openssl libssl-dev sqlite3 libsqlite3-dev   libreadline6-dev libbz2-dev libxml2-dev libxslt1 libffi-dev libssl-dev
+#fi
 
 
 [ ! -f "Python-3.5.2.tgz" ] && wget https://www.python.org/ftp/python/3.5.2/Python-3.5.2.tgz || echo "use local package"
