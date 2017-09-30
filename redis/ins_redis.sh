@@ -17,6 +17,8 @@ tar zxf redis-${VERSION}.tar.gz
 cd redis-${VERSION}
 #(if can not pass: cd deps &&  make hiredis  jemalloc  linenoise  lua)
 make && make PREFIX=/opt/redis-${VERSION} install
+
+rm -rf /opt/redis
 ln -s /opt/redis-${VERSION} /opt/redis
 mkdir -p /opt/redis/etc
 cp redis.conf /opt/redis/etc/

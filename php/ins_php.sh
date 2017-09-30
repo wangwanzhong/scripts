@@ -1,7 +1,11 @@
 #!/bin/bash
-# version: php-5.6.18
+# default version: php-${VERSION}
 
 set -e
+
+DEFAULT_VERSION="5.6.18"
+
+[ -z "$1" ] && VERSION=${DEFAULT_VERSION} || VERSION=$1
 
 yum -y install epel-release
 
@@ -13,16 +17,19 @@ ln -sf /usr/lib64/libc-client.so /usr/lib/libc-client.so
 
 
 
-[ ! -f "php-5.6.18.tar.gz" ] && wget http://am1.php.net/distributions/php-5.6.18.tar.gz || echo "use local package"
+[ ! -f "php-${VERSION}.tar.gz" ] && wget http://am1.php.net/distributions/php-${VERSION}.tar.gz || echo "use local package"
 
-tar zxf php-5.6.18.tar.gz
+tar zxf php-${VERSION}.tar.gz
 
-cd php-5.6.18
+cd php-${VERSION}
 
-./configure --prefix=/opt/php-5.6.18 --with-config-file-path=/etc/php --with-gd --with-freetype-dir --with-jpeg-dir --with-png-dir --with-zlib --with-imap --with-kerberos --with-imap-ssl --with-mhash --with-mcrypt --with-curl --with-openssl --with-gettext --with-iconv-dir --with-libxml-dir --with-fpm-user=www --with-fpm-group=www --with-mysql=mysqlnd --with-mysqli --enable-fpm --enable-inline-optimization --enable-mbstring --enable-gd-native-ttf --enable-mbregex --enable-soap --enable-opcache
+./configure --prefix=/opt/php-${VERSION} --with-config-file-path=/etc/php --with-gd --with-freetype-dir --with-jpeg-dir --with-png-dir --with-zlib --with-imap --with-kerberos --with-imap-ssl --with-mhash --with-mcrypt --with-curl --with-openssl --with-gettext --with-iconv-dir --with-libxml-dir --with-fpm-user=www --with-fpm-group=www --with-mysql=mysqlnd --with-mysqli --enable-fpm --enable-inline-optimization --enable-mbstring --enable-gd-native-ttf --enable-mbregex --enable-soap --enable-opcache
 
 make && make install
-ln -sf /opt/php-5.6.18/ /opt/php
+
+rm -rf /opt/php
+ln -sf /opt/php-${VERSION} /opt/php
 cp php.ini-production /opt/php/etc/php.ini
+[ -d "/etc/php" ] && rm -rf /etc/php
 ln -sf /opt/php/etc /etc/php
 ln -sf /opt/php/bin/* /opt/php/sbin/* /usr/local/bin/

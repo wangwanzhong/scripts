@@ -31,6 +31,7 @@
 # wget https://raw.githubusercontent.com/wangwanzhong/scripts/master/nginx/ins_nginx.sh -O -| /bin/bash
 or install specific version default version: 1.9.9
 # wget https://raw.githubusercontent.com/wangwanzhong/scripts/master/nginx/ins_nginx.sh -O -| /bin/bash -s 1.9.9
+# wget https://raw.githubusercontent.com/wangwanzhong/scripts/master/nginx/ins_nginx.sh -O -| sudo /bin/bash -s 1.10.3
 # mkdir -p /dbdata/logs
 # mkdir -p /dbdata/web/default
 # mkdir -p /dbdata/web/vhosts
