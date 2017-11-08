@@ -7,4 +7,4 @@
  - Redis
  - Python
 
-### 使用方法 [参考文档](http://note.youdao.com/noteshare?id=9a0b3b146d4ddd67d46224a9be3679d0)
+### [参考文档](http://note.youdao.com/noteshare?id=9a0b3b146d4ddd67d46224a9be3679d0)
