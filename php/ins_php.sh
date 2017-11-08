@@ -13,7 +13,7 @@ yum -y install gcc-c++ make libxml2-devel curl-devel libjpeg-devel libpng-devel 
 /usr/bin/id www || useradd -M www
 
 [ -d "/usr/lib64 /usr/kerberos/lib" ] && ln -sf /usr/lib64 /usr/kerberos/lib
-[ -f "/usr/lib64/libc-client.so /usr/lib/libc-client.so" ] && ln -sf /usr/lib64/libc-client.so /usr/lib/libc-client.so
+[ -f "/usr/lib64/libc-client.so" ] && ln -sf /usr/lib64/libc-client.so /usr/lib/libc-client.so
 
 
 
