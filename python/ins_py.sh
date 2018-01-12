@@ -1,6 +1,9 @@
 #!/bin/bash
 # ins_py.sh
 
+## todo list
+# 1. can not install uwsgi through pip, must comment line 24 `sed ... readline...`
+
 set -e
 
 
