@@ -1,14 +1,20 @@
 #!/bin/bash
-# ins_py.sh
-
+#
+#
+# Usage: ./ins_py.sh ${version}
+# 如果不输入版本会默认使用 3.6.5 版本
+#
 ## todo list
 # 1. can not install uwsgi through pip, must comment line 24 `sed ... readline...`
 
 set -e
 
+DefaultVersion=3.6.5
+
+Version=${1:-$DefaultVersion}
 
 if [ -f /etc/redhat-release ]; then
-  yum install -y gcc-c++ zlib-devel openssl-devel sqlite-devel readline-devel
+  yum install -y gcc-c++ zlib-devel openssl-devel sqlite-devel readline-devel libffi-devel wget
 fi
 
 #if [ -z "$(uname -a|grep centos)" ]; then
@@ -16,13 +22,18 @@ fi
 #fi
 
 
-[ ! -f "Python-3.5.2.tgz" ] && wget https://www.python.org/ftp/python/3.5.2/Python-3.5.2.tgz || echo "use local package"
+if [ ! -f "Python-${Version}.tgz" ]; then
+    wget https://www.python.org/ftp/python/${Version}/Python-${Version}.tgz
+    # wget ftp://192.168.1.253/ops/Python/Python-${Version}.tgz
+else
+    echo "use local package"
+fi
 
-tar zxf Python-3.5.2.tgz
-cd Python-3.5.2
+tar zxf Python-${Version}.tgz
+cd Python-${Version}
 
 sed -i 's/^#readline/readline/g' Modules/Setup.dist
 sed -i 's/^#zlib/zlib/g' Modules/Setup.dist
-./configure --prefix=/opt/py352 --with-ensurepip=install
+./configure --prefix=/opt/py_${Version} --with-ensurepip=install --enable-optimizations
 
 make && make install

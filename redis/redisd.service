@@ -1,4 +1,4 @@
-# /usr/lib/systemd/system/redisd.service
+# vim /usr/lib/systemd/system/redisd.service
 # systemctl start redisd
 # systemctl enable redisd
 
@@ -9,8 +9,8 @@ After=network.target
 [Service]
 Type=forking
 PIDFile=/var/run/redis.pid
-ExecStart=/usr/local/bin/redis-server /etc/redis.conf
-ExecStop=/usr/local/bin/redis-cli shutdown
+ExecStart=/opt/redis/bin/redis-server /etc/redis.conf
+ExecStop=/opt/redis/bin/redis-cli shutdown
 
 [Install]
 WantedBy=multi-user.target
