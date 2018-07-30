@@ -13,13 +13,12 @@ DefaultVersion=3.6.5
 
 Version=${1:-$DefaultVersion}
 
-if [ -f /etc/redhat-release ]; then
+
+if [ -f "/etc/lsb-release" ]; then
+  sudo apt-get install -y build-essential zlib1g zlib1g-dev openssl libssl-dev sqlite3 libsqlite3-dev   libreadline6-dev libbz2-dev libxml2-dev libxslt1 libffi-dev libssl-dev
+else
   yum install -y gcc-c++ zlib-devel openssl-devel sqlite-devel readline-devel libffi-devel wget
 fi
-
-#if [ -z "$(uname -a|grep centos)" ]; then
-#  sudo apt-get install -y build-essential zlib1g zlib1g-dev openssl libssl-dev sqlite3 libsqlite3-dev   libreadline6-dev libbz2-dev libxml2-dev libxslt1 libffi-dev libssl-dev
-#fi
 
 
 if [ ! -f "Python-${Version}.tgz" ]; then
