@@ -32,4 +32,4 @@ ln -sf /opt/php-${VERSION} /opt/php
 cp php.ini-production /opt/php/etc/php.ini
 rm -rf /etc/php
 ln -sf /opt/php/etc /etc/php
-ln -sf /opt/php/bin/* /opt/php/sbin/* /usr/local/bin/
+ln -sf /opt/php/bin/* /opt/php/sbin/* /usr/bin/
