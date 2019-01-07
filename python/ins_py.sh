@@ -2,14 +2,12 @@
 #
 #
 # Usage: ./ins_py.sh ${version}
-# 如果不输入版本会默认使用 3.6.5 版本
+# 如果不输入版本会默认使用 DefaultVersion 指定版本
 #
-## todo list
-# 1. can not install uwsgi through pip, must comment line 24 `sed ... readline...`
 
 set -e
 
-DefaultVersion=3.6.5
+DefaultVersion=3.7.0
 
 Version=${1:-$DefaultVersion}
 
