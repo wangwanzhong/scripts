@@ -31,6 +31,8 @@ cd Python-${Version}
 
 sed -i 's/^#readline/readline/g' Modules/Setup.dist
 sed -i 's/^#zlib/zlib/g' Modules/Setup.dist
-./configure --prefix=/opt/py_${Version} --with-ensurepip=install --enable-optimizations
+./configure --prefix=/opt/py_${Version} --with-ensurepip=install
+# optimizations will slow
+#./configure --prefix=/opt/py_${Version} --with-ensurepip=install --enable-optimizations
 
 make && make install
