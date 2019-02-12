@@ -32,6 +32,10 @@ cd Python-${Version}
 sed -i 's/^#readline/readline/g' Modules/Setup.dist
 sed -i 's/^#zlib/zlib/g' Modules/Setup.dist
 ./configure --prefix=/opt/py_${Version} --with-ensurepip=install
+
+# with you own openssl
+#./configure --prefix=/opt/py_${Version} --with-ensurepip=install --with-openssl=/usr/local/openssl
+
 # optimizations will slow
 #./configure --prefix=/opt/py_${Version} --with-ensurepip=install --enable-optimizations
 
