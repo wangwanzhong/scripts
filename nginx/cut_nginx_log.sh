@@ -2,7 +2,7 @@
 #
 ### 
 #  vim /root/cron/cut_nginx_log.sh
-#
+#  chmod u+x /root/cron/cut_nginx_log.sh
 #  echo '59 23 * * * /root/cron/cut_nginx_log.sh' >> /var/spool/cron/root
 #
 #
