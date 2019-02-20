@@ -5,7 +5,7 @@ After=network.target
 
 [Service]
 Type=forking
-PIDFile=/tmp/mongod.pid
+PIDFile=/opt/mongodb/mongod.pid
 ExecStart=/usr/bin/mongod --config /etc/mongod/mongod.yaml
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=always

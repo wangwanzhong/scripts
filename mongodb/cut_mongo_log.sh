@@ -1,5 +1,5 @@
 #!/bin/bash
-# /root/cron/cut_mongo_log.sh
+# chmod u+x /root/cron/cut_mongo_log.sh
 # echo '59 23 * * * /root/cron/cut_mongo_log.sh' >> /var/spool/cron/root
 ################################
 

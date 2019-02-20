@@ -12,9 +12,9 @@ storage:
       directoryForIndexes: true
 processManagement:
   fork: true
-  pidFilePath: /var/run/mongod.pid
+  pidFilePath: /opt/mongodb/mongod.pid
 net:
-  bindIp: 127.0.0.1,172.31.*.*
+  bindIp: 127.0.0.1
   port: 27017
 security:
   authorization: enabled

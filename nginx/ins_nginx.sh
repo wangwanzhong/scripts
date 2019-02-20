@@ -20,7 +20,16 @@ yum -y install gcc-c++ make pcre-devel openssl-devel
 # install
 tar zxf nginx-${version}.tar.gz
 cd nginx-${version}
-./configure --prefix=/opt/nginx --user=www --with-http_stub_status_module --with-http_realip_module --with-http_gzip_static_module --with-http_ssl_module
+./configure \
+    --prefix=/opt/nginx \
+    --user=www \
+    --with-http_stub_status_module \
+    --with-http_realip_module \
+    --with-http_gzip_static_module \
+    --with-http_ssl_module \
+    --with-http_v2_module
+
+
 make && make install
 
 # config
