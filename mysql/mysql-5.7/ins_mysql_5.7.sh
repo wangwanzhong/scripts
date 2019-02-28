@@ -89,7 +89,7 @@ max_connections=200
 default-storage-engine=INNODB
 #ssl=false" > /etc/my.cnf
 
-./bin/mysqld --initialize --user=mysql --datadir=/data/db/mysqldata --basedir=/opt/mysql/
+./bin/mysqld --initialize --user=mysql --datadir=${DataDir} --basedir=/opt/mysql/
 /bin/cp support-files/mysql.server /etc/init.d/mysqld
 sed -i "s;^datadir=;datadir=${DataDir};g" /etc/init.d/mysqld
 sed -i "s;^basedir=;basedir=${InstallDir}/mysql;g" /etc/init.d/mysqld

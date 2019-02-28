@@ -1,12 +1,12 @@
 [client]
 port            = 3306
-socket          = /tmp/mysql.sock
+socket          = /var/run/mysql.sock
 default-character-set=utf8
 
 [mysqld]
 data = /data/db/mysqldata
 port            = 3306
-socket          = /tmp/mysql.sock
+socket          = /var/run/mysql.sock
 skip-external-locking
 key_buffer_size = 384M
 max_allowed_packet = 1M
