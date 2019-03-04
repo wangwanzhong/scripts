@@ -1,4 +1,5 @@
 #!/bin/bash
+# 一键安装：wget https://raw.githubusercontent.com/wangwanzhong/scripts/master/nginx/ins_nginx.sh -O -| /bin/bash
 # version: nginx-${version}
 
 set -e
@@ -33,4 +34,4 @@ cd nginx-${version}
 make && make install
 
 # config
-ln -s /opt/nginx/sbin/nginx /usr/local/bin/
+ln -s /opt/nginx/sbin/nginx /usr/bin/

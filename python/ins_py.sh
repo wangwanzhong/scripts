@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#
+# 一键安装：wget https://raw.githubusercontent.com/wangwanzhong/scripts/master/python/ins_py.sh -O -| /bin/bash
 # Usage: ./ins_py.sh ${version}
 # 如果不输入版本会默认使用 DefaultVersion 指定版本
 #

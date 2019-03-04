@@ -1,54 +1,90 @@
-tar zxf mongodb-linux-x86_64-4.0.3.tgz -C /opt/
-ln -s /opt/mongodb-linux-x86_64-4.0.3/ /opt/mongodb
-ln -s /opt/mongodb/bin/* /usr/bin/
 
-mkdir -p {/data/logs/mongodb/,/data/db/mongodb/,/etc/mongod}
-useradd mongodb
+
+https://github.com/mongodb/mongo/blob/master/rpm/mongod.service
+
+
+
 chown -R mongodb /data/db/mongodb/ /data/logs/mongodb/
 
-echo '[Unit]
+echo "# https://github.com/mongodb/mongo/blob/master/rpm/mongod.service
+
+[Unit]
 Description=MongoDB Database Service
 Wants=network.target
 After=network.target
+Documentation=https://docs.mongodb.org/manual
 
 [Service]
-Type=forking
-PIDFile=/data/db/mongodb/mongod.pid
-ExecStart=/usr/bin/mongod --config /etc/mongod/mongod.yaml
+User=mongod
+Group=mongod
+
+Environment="OPTIONS=-f /etc/mongod.yaml"
+EnvironmentFile=-/etc/sysconfig/mongod
+
+ExecStart=/usr/bin/mongod $OPTIONS
+ExecStartPre=/usr/bin/mkdir -p /var/run/mongodb
+ExecStartPre=/usr/bin/mkdir -p ${data_dir}
+ExecStartPre=/usr/bin/mkdir -p ${log_dir}
+ExecStartPre=/usr/bin/chown mongod:mongod /var/run/mongodb ${data_dir} ${log_dir}
+ExecStartPre=/usr/bin/chmod 0755 /var/run/mongodb
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=always
-User=mongodb
-Group=mongodb
-StandardOutput=syslog
-StandardError=syslog
+
+PermissionsStartOnly=true
+
+PIDFile=/var/run/mongodb/mongod.pid
+
+Type=forking
+
+#StandardOutput=syslog
+#StandardError=syslog
+
+# file size
+LimitFSIZE=infinity
+# cpu time
+LimitCPU=infinity
+# virtual memory size
+LimitAS=infinity
+# open files
+LimitNOFILE=64000
+# processes/threads
+LimitNPROC=64000
+# locked memory
+LimitMEMLOCK=infinity
+# total threads (user+kernel)
+TasksMax=infinity
+TasksAccounting=false
+# Recommended limits for for mongod as specified in
+# http://docs.mongodb.org/manual/reference/ulimit/#recommended-settings
 
 [Install]
-WantedBy=multi-user.target' > /etc/systemd/system/mongodb.service
+WantedBy=multi-user.target" > /etc/systemd/system/mongodb.service
 
 
-echo 'systemLog:
+echo "systemLog:
   destination: file
-  path: /data/logs/mongodb/mongod.log
+  path: ${log_dir}/mongod.log
   logAppend: true
 storage:
   journal:
     enabled: true
-  dbPath: /data/db/mongodb/
+  dbPath: ${data_dir}
   directoryPerDB: true
   wiredTiger:
     engineConfig:
       directoryForIndexes: true
 processManagement:
   fork: true
-  pidFilePath: /data/db/mongodb/mongod.pid
+  pidFilePath: /var/run/mongodb/mongod.pid
 net:
   bindIp: 127.0.0.1
   port: 27017
+  maxIncomingConnections: 3000
 security:
-  authorization: enabled' > /etc/mongod/mongod.yaml
+  authorization: enabled" > /etc/mongod.yaml
 
 
-
+systemctl daemon-reload
 systemctl start mongodb
 systemctl status mongodb
 systemctl enable mongodb

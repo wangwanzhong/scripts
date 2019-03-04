@@ -32,3 +32,25 @@ mysql> flush privileges;
 mysql> exit
 
 # 连接成功后即可以设置 root 密码和新建数据库等操作
+
+
+### 遇到问题
+
+- mysql 导入数据保存
+```
+[ERR] 1153 - Got a packet bigger than 'max_allowed_packet' bytes
+```
+
+```
+mysql> show variables like '%max_allowed_packet%';
++--------------------------+------------+
+| Variable_name            | Value      |
++--------------------------+------------+
+| max_allowed_packet       | 1048576    |
+| slave_max_allowed_packet | 1073741824 |
++--------------------------+------------+
+2 rows in set (0.00 sec)
+
+mysql> set global max_allowed_packet=10485760;
+Query OK, 0 rows affected (0.00 sec)
+```
