@@ -7,7 +7,7 @@
 
 set -e
 
-DefaultVersion=3.7.0
+DefaultVersion=3.7.2
 
 Version=${1:-$DefaultVersion}
 
@@ -36,7 +36,7 @@ sed -i 's/^#zlib/zlib/g' Modules/Setup.dist
 # with you own openssl
 #./configure --prefix=/opt/py_${Version} --with-ensurepip=install --with-openssl=/usr/local/openssl
 
-# optimizations will slow
+# optimizations will increase build time extremely 
 #./configure --prefix=/opt/py_${Version} --with-ensurepip=install --enable-optimizations
 
 make && make install
