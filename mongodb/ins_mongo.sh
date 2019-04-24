@@ -5,16 +5,11 @@
 set -e
 
 version='4.0.6'
+tar_pkg="mongodb-linux-x86_64-${version}.tgz"
 data_dir='/data/db/mongodb/'
 log_dir='/data/logs/mongodb'
 
-mkdir -p ${data_dir}
-mkdir -p ${log_dir}
-
-tar_pkg="mongodb-linux-x86_64-${version}.tgz"
-
 tar zxf ${tar_pkg} -C /opt/
-
 ln -s /opt/${tar_pkg%.tgz}/ /opt/mongodb
 ln -s /opt/mongodb/bin/* /usr/bin/
 
@@ -102,3 +97,5 @@ systemctl daemon-reload
 systemctl start mongodb
 systemctl status mongodb
 systemctl enable mongodb
+
+echo 'db.serverStatus().connections' | mongo

@@ -1,8 +1,11 @@
 #!/bin/bash
 #
-# 一键安装：wget https://raw.githubusercontent.com/wangwanzhong/scripts/master/python/ins_py.sh -O -| /bin/bash
-# Usage: ./ins_py.sh ${version}
+#
+# wget https://raw.githubusercontent.com/wangwanzhong/scripts/master/python/ins_py.sh -O -| /bin/bash -s 3.7.3
+#
 # 如果不输入版本会默认使用 DefaultVersion 指定版本
+# wget https://raw.githubusercontent.com/wangwanzhong/scripts/master/python/ins_py.sh -O -| /bin/bash
+# ./ins_py.sh ${version}
 #
 
 set -e
