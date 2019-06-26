@@ -10,7 +10,7 @@
 
 set -e
 
-DefaultVersion=3.7.2
+DefaultVersion=3.7.3
 
 Version=${1:-$DefaultVersion}
 

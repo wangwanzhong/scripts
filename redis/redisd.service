@@ -9,6 +9,8 @@ After=network.target
 [Service]
 Type=forking
 PIDFile=/var/run/redis.pid
+ExecStartPre=echo never > /sys/kernel/mm/transparent_hugepage/enabled
+ExecStartPre=echo 511 > /proc/sys/net/core/somaxconn
 ExecStart=/opt/redis/bin/redis-server /etc/redis.conf
 ExecStop=/opt/redis/bin/redis-cli shutdown
 

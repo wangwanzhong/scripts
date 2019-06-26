@@ -1,5 +1,6 @@
 #!/bin/bash
 # Usage: ./ins-redis.sh 3.2.8
+# wget https://raw.githubusercontent.com/wangwanzhong/scripts/master/redis/ins_redis.sh -O -| /bin/bash
 
 set -e
 
@@ -24,3 +25,16 @@ mkdir -p /opt/redis/etc
 cp redis.conf /opt/redis/etc/
 ln -sf /opt/redis/etc/redis.conf /etc/redis.conf
 ln -sf /opt/redis/bin/* /usr/local/bin/
+
+#echo 'vm.overcommit_memory = 1' >> /etc/sysctl.conf
+#sysctl vm.overcommit_memory=1
+
+#redis-cli ping
+
+# 关闭 rdb
+# config get save
+# config set save ""
+
+# 关闭 aof
+# config get appendfsync
+# config set appendfsync no 
