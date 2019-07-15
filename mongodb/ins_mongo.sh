@@ -4,7 +4,9 @@
 
 set -e
 
-version='4.0.6'
+default_version='4.0.6'
+version=${1:-$default_version}
+
 tar_pkg="mongodb-linux-x86_64-${version}.tgz"
 data_dir='/data/db/mongodb/'
 log_dir='/data/logs/mongodb'
