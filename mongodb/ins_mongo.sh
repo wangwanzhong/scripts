@@ -11,7 +11,7 @@ log_dir='/data/logs/mongodb'
 
 version=${1:-$default_version}
 tar_pkg="mongodb-linux-x86_64-${version}.tgz"
-
+[ ! -f "${tar_pkg}" ] && echo "no install package ${tar_pkg}, downloading..." && wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-${version}.tgz
 
 tar zxf ${tar_pkg} -C /opt/
 ln -s /opt/${tar_pkg%.tgz}/ /opt/mongodb
