@@ -6,11 +6,12 @@
 set -e
 
 default_version='4.0.6'
-version=${1:-$default_version}
-
-tar_pkg="mongodb-linux-x86_64-${version}.tgz"
 data_dir='/data/db/mongodb/'
 log_dir='/data/logs/mongodb'
+
+version=${1:-$default_version}
+tar_pkg="mongodb-linux-x86_64-${version}.tgz"
+
 
 tar zxf ${tar_pkg} -C /opt/
 ln -s /opt/${tar_pkg%.tgz}/ /opt/mongodb
@@ -102,3 +103,21 @@ systemctl status mongodb
 systemctl enable mongodb
 
 echo 'db.serverStatus().connections' | mongo
+
+mkdir -p /root/cron
+echo '#!/bin/bash' > /root/cron/cut_mongo_log.sh
+
+echo "
+
+LOGFILE=${log_dir}/mongod.log
+
+killall -SIGUSR1 mongod
+
+DATE=\$(date -d '7 days ago' +'%Y-%m-%d')
+
+rm -f \${LOGFILE}.\${DATE}T*-*-*" >> /root/cron/cut_mongo_log.sh
+
+chmod u+x /root/cron/cut_mongo_log.sh
+echo '59 23 * * * /root/cron/cut_mongo_log.sh' >> /var/spool/cron/root
+
+exit 0
