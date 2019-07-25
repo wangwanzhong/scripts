@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # refer: https://github.com/mongodb/mongo/blob/master/rpm/mongod.service
+# wget https://raw.githubusercontent.com/wangwanzhong/scripts/master/mongodb/ins_mongo.sh -O -| /bin/bash -s 4.0.6
 
 set -e
 
@@ -88,7 +89,7 @@ processManagement:
   fork: true
   pidFilePath: /var/run/mongodb/mongod.pid
 net:
-  bindIp: 127.0.0.1
+  bindIp: 0.0.0.0
   port: 27017
   maxIncomingConnections: 3000
 security:
