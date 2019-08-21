@@ -10,7 +10,7 @@
 set -e
 
 PHP_PID=/var/run/php-fpm.pid
-LOG_PATH=/dbdata/logs
+LOG_PATH=/data/logs
 
 CUT_TIME=$(date +"%Y%m%d")
 DEL_TIME=$(date -d "7 days ago" +"%Y%m%d")
