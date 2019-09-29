@@ -23,8 +23,11 @@ fi
 
 
 if [ ! -f "Python-${Version}.tgz" ]; then
-    wget https://www.python.org/ftp/python/${Version}/Python-${Version}.tgz
-    # wget ftp://192.168.1.253/ops/Python/Python-${Version}.tgz
+    if ping -c 1 192.168.1.1; then
+        wget ftp://192.168.1.253/ops/Python/Python-${Version}.tgz
+    else
+        wget https://www.python.org/ftp/python/${Version}/Python-${Version}.tgz
+    fi
 else
     echo "use local package"
 fi

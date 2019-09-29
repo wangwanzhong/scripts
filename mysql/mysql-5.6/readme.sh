@@ -1,5 +1,6 @@
 # 下载二进制安装包
 wget http://cdn.mysql.com/Downloads/MySQL-5.6/mysql-5.6.19-linux-glibc2.5-x86_64.tar.gz
+wget https://downloads.mysql.com/archives/get/file/mysql-5.6.40-linux-glibc2.12-x86_64.tar.gz
 
 # 安装（ins_mysql.sh 脚本内容详见文档结尾附一）
 ./ins_mysql.sh mysql-5.6.19-linux-glibc2.5-x86_64.tar.gz
