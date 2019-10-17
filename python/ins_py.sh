@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 #
-# wget https://raw.githubusercontent.com/wangwanzhong/scripts/master/python/ins_py.sh -O -| /bin/bash -s 3.7.3
+# wget https://raw.githubusercontent.com/wangwanzhong/scripts/master/python/ins_py.sh -O -| /bin/bash -s 3.8.0
 #
 # 如果不输入版本会默认使用 DefaultVersion 指定版本
 # wget https://raw.githubusercontent.com/wangwanzhong/scripts/master/python/ins_py.sh -O -| /bin/bash
@@ -10,7 +10,7 @@
 
 set -e
 
-DefaultVersion=3.7.3
+DefaultVersion=3.8.0
 
 Version=${1:-$DefaultVersion}
 
@@ -35,8 +35,10 @@ fi
 tar zxf Python-${Version}.tgz
 cd Python-${Version}
 
-sed -i 's/^#readline/readline/g' Modules/Setup.dist
-sed -i 's/^#zlib/zlib/g' Modules/Setup.dist
+#sed -i 's/^#readline/readline/g' Modules/Setup.dist
+#sed -i 's/^#zlib/zlib/g' Modules/Setup.dist
+sed -i 's/^#readline/readline/g' Modules/Setup
+sed -i 's/^#zlib/zlib/g' Modules/Setup
 ./configure --prefix=/opt/py_${Version} --with-ensurepip=install
 
 # with you own openssl
