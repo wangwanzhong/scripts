@@ -5,10 +5,9 @@ After=syslog.target network.target
 
 [Service]
 Type=forking
-# 注意与 php-fpm.conf 中配置一致，否则启动时候会卡住
-PIDFile=/opt/php/var/run/php-fpm.pid
+PIDFile=/var/run/php-fpm.pid
 ExecStartPre=/opt/php/sbin/php-fpm -t
-ExecStart=/opt/php/sbin/php-fpm
+ExecStart=/opt/php/sbin/php-fpm -c /etc/php
 ExecReload=/bin/kill -USR2 $MAINPID
 PrivateTmp=true
 LimitNOFILE=64000

@@ -1,3 +1,8 @@
+- install
+```
+mkdir -p /data/web/ /data/logs
+```
+
 - composer
 ```
 curl -sS https://getcomposer.org/installer | /data/soft/php/bin/php -- --install-dir=/usr/bin
