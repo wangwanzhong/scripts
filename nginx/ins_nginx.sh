@@ -11,8 +11,6 @@ else
 fi
 
 
-# requirement
-
 /usr/bin/id www || useradd -M www
 
 yum -y install gcc-c++ make pcre-devel openssl-devel

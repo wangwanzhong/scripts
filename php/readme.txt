@@ -1,5 +1,6 @@
 - install
 ```
+ wget https://raw.githubusercontent.com/wangwanzhong/scripts/master/php/ins_php.sh -O -| /bin/bash -s 7.3.10
 mkdir -p /data/web/ /data/logs
 ```
 

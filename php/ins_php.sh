@@ -7,7 +7,9 @@ DEFAULT_VERSION="5.6.18"
 
 [ -z "$1" ] && VERSION=${DEFAULT_VERSION} || VERSION=$1
 
-yum -y install epel-release
+#yum -y install epel-release
+sudo amazon-linux-extras install epel
+
 #wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 #rpm -ivh epel-release-latest-7.noarch.rpm
 #yum repolist
