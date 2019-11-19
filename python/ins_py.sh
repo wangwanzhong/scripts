@@ -48,3 +48,5 @@ sed -i 's/^#zlib/zlib/g' Modules/Setup
 #./configure --prefix=/opt/py_${Version} --with-ensurepip=install --enable-optimizations
 
 make && make install
+
+rm -rf Python-${Version}
