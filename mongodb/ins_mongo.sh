@@ -45,7 +45,7 @@ Restart=always
 
 PermissionsStartOnly=true
 
-PIDFile=/var/run/mongodb/mongod.pid
+PIDFile=/opt/mongodb/mongod.pid
 
 Type=forking
 
@@ -88,7 +88,7 @@ storage:
       directoryForIndexes: true
 processManagement:
   fork: true
-  pidFilePath: /var/run/mongodb/mongod.pid
+  pidFilePath: /opt/mongodb/mongod.pid
 net:
   bindIp: 0.0.0.0
   port: 27017

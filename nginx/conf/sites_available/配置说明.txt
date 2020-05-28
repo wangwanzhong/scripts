@@ -77,12 +77,12 @@ http {
         #weigth参数表示权值，权值越高被分配到的几率越大
         #本机上的Squid开启3128端口
         server 192.168.8.1:3128 weight=5;
-        server 192.168.8.2:80  weight=1;
-        server 192.168.8.3:80  weight=6;
+        server 192.168.8.2:80 weight=1;
+        server 192.168.8.3:80 weight=6;
     }
     upstream mysvr2 {
-        server 192.168.8.x:80  weight=1;
-        server 192.168.8.x:80  weight=6;
+        server 192.168.8.x:80 weight=1;
+        server 192.168.8.x:80 weight=6;
     }
      
     include sites_enable/*.conf;
