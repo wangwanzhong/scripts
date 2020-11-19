@@ -10,7 +10,10 @@ ExecStartPre=/opt/php/sbin/php-fpm -t
 ExecStart=/opt/php/sbin/php-fpm -c /etc/php
 ExecReload=/bin/kill -USR2 $MAINPID
 PrivateTmp=true
-LimitNOFILE=64000
+#LimitNOFILE=64000
+LimitNOFILE=infinity
+LimitNPROC=infinity
+LimitCORE=infinity
 
 [Install]
 WantedBy=multi-user.target
