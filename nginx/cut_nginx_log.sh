@@ -29,6 +29,8 @@ cut_nginx(){
     done
     
     kill -USR1 `cat ${PID_FILE}`
+    # Just for Docker
+    #docker exec nginxd kill -USR1 1
 
 }
 
