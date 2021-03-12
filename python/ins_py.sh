@@ -7,6 +7,8 @@
 # wget https://raw.githubusercontent.com/wangwanzhong/scripts/master/python/ins_py.sh -O -| /bin/bash
 # ./ins_py.sh ${version}
 #
+# sqlite3 --version
+#
 
 set -e
 
@@ -49,4 +51,3 @@ sed -i 's/^#zlib/zlib/g' Modules/Setup
 
 make && make install
 
-rm -rf Python-${Version}
