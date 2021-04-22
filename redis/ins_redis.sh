@@ -24,7 +24,7 @@ ln -s /opt/redis-${VERSION} /opt/redis
 mkdir -p /opt/redis/etc
 cp redis.conf /opt/redis/etc/
 ln -sf /opt/redis/etc/redis.conf /etc/redis.conf
-ln -sf /opt/redis/bin/* /usr/local/bin/
+ln -sf /opt/redis/bin/* /usr/bin/
 
 #echo 'vm.overcommit_memory = 1' >> /etc/sysctl.conf
 #sysctl vm.overcommit_memory=1
