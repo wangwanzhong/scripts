@@ -2,14 +2,18 @@
 - https://github.com/mongodb/mongo/blob/master/rpm/
 - 查看版本：https://www.mongodb.com/download-center/community/releases
 
+# 一、准备工作
 
-## 一、安装
-
-## 方法一：二进制安装
-```
+``` bash
 # 查看版本
 # https://www.mongodb.com/download-center/community/releases
+```
 
+## 二、安装
+
+## 方法一：二进制安装
+
+``` bash
 # 下载安装包
 wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-4.0.6.tgz
 
@@ -22,9 +26,6 @@ wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-4.0.6.tgz
 > 参考地址：https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/
 
 ``` bash
-# 查看版本
-# https://www.mongodb.com/download-center/community/releases
-
 echo '[mongodb-org-4.4]
 name=MongoDB Repository
 baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.4/x86_64/
@@ -71,6 +72,11 @@ net:
 security:
   authorization: disabled" > /etc/mongod.conf
 
+vim /usr/lib/systemd/system/mongod.service
+添加两行
+ExecStartPre=/bin/sh -c 'echo never | tee /sys/kernel/mm/transparent_hugepage/enabled > /dev/null'
+ExecStartPre=/bin/sh -c 'echo never | tee /sys/kernel/mm/transparent_hugepage/defrag > /dev/null'
+
 # 启动
 systemctl daemon-reload
 systemctl start mongodb
@@ -98,17 +104,21 @@ echo '59 23 * * * /root/cron/cut_mongo_log.sh' >> /var/spool/cron/root
 
 ```
 
-## 二、 开启授权（可选）
+## 三、 修改配置
+
+### 开启授权（可选）
 
 - 添加账号
 
 - 修改配置
-```
+
+``` bash
 security:
     authorization: enabled
 ```
 
 - 重启服务
-```
+
+``` bash
 systemctl restart mongodb
 ```
