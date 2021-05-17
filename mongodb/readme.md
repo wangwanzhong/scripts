@@ -122,3 +122,14 @@ security:
 ``` bash
 systemctl restart mongodb
 ```
+
+## ARM64 位安装方法
+
+``` bash
+wget https://repo.mongodb.org/yum/amazon/2/mongodb-org/4.4/aarch64/RPMS/mongodb-org-server-4.4.6-1.amzn2.aarch64.rpm
+yum install mongodb-org-server-4.4.6-1.amzn2.aarch64.rpm
+
+
+wget https://fastdl.mongodb.org/tools/db/mongodb-database-tools-amazon2-arm64-100.3.1.rpm
+yum install mongodb-database-tools-amazon2-arm64-100.3.1.rpm
+```
