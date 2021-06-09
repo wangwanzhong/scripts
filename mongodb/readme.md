@@ -1,12 +1,8 @@
-## 参考
-- https://github.com/mongodb/mongo/blob/master/rpm/
-- 查看版本：https://www.mongodb.com/download-center/community/releases
-
 # 一、准备工作
 
 ``` bash
 # 查看版本
-# https://www.mongodb.com/download-center/community/releases
+# https://www.mongodb.com/try/download/community
 ```
 
 ## 二、安装
@@ -16,12 +12,27 @@
 ``` bash
 # 下载安装包
 wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-4.0.6.tgz
-
-# 执行安装脚本，默认版本 4.0.6 或者通过 -s 指定其他版本
-# wget https://raw.githubusercontent.com/wangwanzhong/scripts/master/mongodb/ins_mongo.sh -O -| /bin/bash -s rhel80-4.4.5
 ```
 
 ## 方法二：包管理器安装
+
+### amazon2 ARM64 安装方法
+
+``` bash
+yum install -y https://repo.mongodb.org/yum/amazon/2/mongodb-org/4.4/aarch64/RPMS/mongodb-org-server-4.4.6-1.amzn2.aarch64.rpm
+yum install -y https://fastdl.mongodb.org/tools/db/mongodb-database-tools-amazon2-arm64-100.3.1.rpm
+yum install -y https://downloads.mongodb.com/compass/mongodb-mongosh-0.14.0.amzn2.aarch64.rpm
+
+
+mkdir /data/mongodb
+mkdir /data/logs/mongodb
+chown -R mongod:mongod /data/mongodb /data/logs/mongodb
+
+systemctl start mongod
+systemctl enable mongod
+```
+
+### X86_64 安装方法
 
 > 参考地址：https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/
 
@@ -121,15 +132,4 @@ security:
 
 ``` bash
 systemctl restart mongodb
-```
-
-## ARM64 位安装方法
-
-``` bash
-wget https://repo.mongodb.org/yum/amazon/2/mongodb-org/4.4/aarch64/RPMS/mongodb-org-server-4.4.6-1.amzn2.aarch64.rpm
-yum install mongodb-org-server-4.4.6-1.amzn2.aarch64.rpm
-
-
-wget https://fastdl.mongodb.org/tools/db/mongodb-database-tools-amazon2-arm64-100.3.1.rpm
-yum install mongodb-database-tools-amazon2-arm64-100.3.1.rpm
 ```
