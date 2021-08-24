@@ -18,9 +18,12 @@ Version=${1:-$DefaultVersion}
 
 
 if [ -f "/etc/lsb-release" ]; then
-  sudo apt-get install -y build-essential zlib1g zlib1g-dev openssl libssl-dev sqlite3 libsqlite3-dev   libreadline6-dev libbz2-dev libxml2-dev libxslt1 libffi-dev libssl-dev
+  sudo apt-get install -y build-essential zlib1g zlib1g-dev openssl libssl-dev sqlite3 libsqlite3-dev libreadline6-dev libbz2-dev libxml2-dev libxslt1 libffi-dev libssl-dev
 else
-  yum install -y gcc-c++ zlib-devel openssl-devel sqlite-devel readline-devel libffi-devel wget
+  # ModuleNotFoundError: No module named '_bz2'
+  # yum install bzip2-devel
+  # libyaml-devel  libyaml libxml2 libxslt-devel libxml2-devel{@class=h5 text-secondary mb-4}
+  yum install -y gcc-c++ zlib-devel openssl-devel sqlite-devel readline-devel libffi-devel bzip2-devel wget
 fi
 
 
