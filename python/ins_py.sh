@@ -1,9 +1,9 @@
 #!/bin/bash
 #
+# 指定版本
+# wget https://raw.githubusercontent.com/wangwanzhong/scripts/master/python/ins_py.sh -O -| /bin/bash -s 3.9.6
 #
-# wget https://raw.githubusercontent.com/wangwanzhong/scripts/master/python/ins_py.sh -O -| /bin/bash -s 3.8.0
-#
-# 如果不输入版本会默认使用 DefaultVersion 指定版本
+# 默认版本
 # wget https://raw.githubusercontent.com/wangwanzhong/scripts/master/python/ins_py.sh -O -| /bin/bash
 # ./ins_py.sh ${version}
 #
@@ -23,7 +23,9 @@ else
   # ModuleNotFoundError: No module named '_bz2'
   # yum install bzip2-devel
   # libyaml-devel  libyaml libxml2 libxslt-devel libxml2-devel{@class=h5 text-secondary mb-4}
-  yum install -y gcc-c++ zlib-devel openssl-devel sqlite-devel readline-devel libffi-devel bzip2-devel wget
+  #  --enable-shared --enable-optimizations
+  yum install -y wget
+  yum install -y gcc-c++ zlib-devel openssl-devel sqlite-devel readline-devel libffi-devel bzip2-devel xz-devel libuuid-devel tk-devel gdbm-devel expat-devel
 fi
 
 

@@ -24,10 +24,15 @@ yum install -y https://repo.mongodb.org/yum/amazon/2/mongodb-org/4.4/aarch64/RPM
 yum install -y https://fastdl.mongodb.org/tools/db/mongodb-database-tools-amazon2-arm64-100.3.1.rpm
 yum install -y https://downloads.mongodb.com/compass/mongodb-mongosh-0.14.0.amzn2.aarch64.rpm
 
-### X86_64
+### X86_64 for amzn2
 yum install -y https://repo.mongodb.org/yum/amazon/2/mongodb-org/4.4/x86_64/RPMS/mongodb-org-server-4.4.6-1.amzn2.x86_64.rpm
 yum install -y https://downloads.mongodb.com/compass/mongodb-mongosh-0.13.2.el7.x86_64.rpm
 yum install -y https://fastdl.mongodb.org/tools/db/mongodb-database-tools-amazon2-x86_64-100.3.1.rpm
+
+### X86_64 for CentOS7
+yum install -y https://repo.mongodb.org/yum/redhat/7/mongodb-org/4.4/x86_64/RPMS/mongodb-org-server-4.4.9-1.el7.x86_64.rpm
+yum install -y https://downloads.mongodb.com/compass/mongodb-mongosh-0.13.2.el7.x86_64.rpm
+yum install -y https://fastdl.mongodb.org/tools/db/mongodb-database-tools-rhel70-x86_64-100.5.0.rpm
 
 
 mkdir /data/mongodb
