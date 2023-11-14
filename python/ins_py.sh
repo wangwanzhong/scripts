@@ -54,3 +54,8 @@ sed -i 's/^#zlib/zlib/g' Modules/Setup
 
 make && make install
 
+#echo "export PATH=/opt/py_${Version}/bin:"'$PATH' >> /etc/profile
+#source /etc/profile
+
+# 国内可以修改源
+#pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/
