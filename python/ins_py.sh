@@ -23,7 +23,7 @@ else
   # ModuleNotFoundError: No module named '_bz2'
   # yum install bzip2-devel
   # libyaml-devel  libyaml libxml2 libxslt-devel libxml2-devel{@class=h5 text-secondary mb-4}
-  yum install -y gcc-c++ zlib-devel openssl-devel sqlite-devel readline-devel libffi-devel bzip2-devel wget
+  yum install -y gcc-c++ make zlib-devel openssl-devel sqlite-devel readline-devel libffi-devel bzip2-devel wget
 fi
 
 
