@@ -14,6 +14,10 @@
 
 下载地址：https://www.openssl.org/source/
 
+| Python | openssl |
+| --- | --- |
+| 3.10.12 | 1.1.1w |
+
 openssl_version=1.1.1w
 wget https://www.openssl.org/source/openssl-${openssl_version}.tar.gz
 tar zxf openssl-${openssl_version}.tar.gz && cd openssl-${openssl_version}
