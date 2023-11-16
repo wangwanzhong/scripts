@@ -14,9 +14,10 @@
 
 下载地址：https://www.openssl.org/source/
 
-wget https://www.openssl.org/source/openssl-1.0.2q.tar.gz
-tar zxf openssl-1.0.2q.tar.gz && cd openssl-1.0.2q
-./config --prefix=/opt/openssl && make && make install
-
-编译 Python 时指定 --with-openssl=/opt/openssl
+openssl_version=1.1.1w
+wget https://www.openssl.org/source/openssl-${openssl_version}.tar.gz
+tar zxf openssl-${openssl_version}.tar.gz && cd openssl-${openssl_version}
+./config --prefix=/opt/openssl-${openssl_version} && make && make install
+ln -s /opt/openssl-${openssl_version} /opt/openssl
+编译 Python 时指定 --with-openssl=/opt/openssl-${openssl_version}
 ```
