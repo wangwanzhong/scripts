@@ -43,11 +43,7 @@ echo "编译 Python 时指定 --with-openssl=/opt/openssl-${openssl_version}"
 cd ..
 
 if [ ! -f "Python-${Version}.tgz" ]; then
-    if ping -c 1 192.168.1.1; then
-        wget ftp://192.168.1.253/ops/Python/Python-${Version}.tgz
-    else
-        wget https://www.python.org/ftp/python/${Version}/Python-${Version}.tgz
-    fi
+    wget https://www.python.org/ftp/python/${Version}/Python-${Version}.tgz
 else
     echo "use local package"
 fi
