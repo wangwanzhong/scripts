@@ -13,6 +13,7 @@
 set -e
 
 DefaultVersion=3.9.6
+openssl_version=${2-1.1.1w}
 
 Version=${1:-$DefaultVersion}
 
@@ -26,6 +27,20 @@ else
   yum install -y gcc-c++ make zlib-devel openssl-devel sqlite-devel readline-devel libffi-devel bzip2-devel wget
 fi
 
+echo "install openssl-${openssl_version}"
+
+if [ ! -f "openssl-${openssl_version}.tar.gz" ]; then
+    wget --no-check-certificate https://www.openssl.org/source/openssl-${openssl_version}.tar.gz
+fi
+
+[ -d "openssl-${openssl_version}" ] && rm -rf openssl-${openssl_version}
+tar zxf openssl-${openssl_version}.tar.gz && cd openssl-${openssl_version}
+./config --prefix=/opt/openssl-${openssl_version} && make && make install
+ln -s /opt/openssl-${openssl_version} /opt/openssl
+
+echo "编译 Python 时指定 --with-openssl=/opt/openssl-${openssl_version}"
+
+cd ..
 
 if [ ! -f "Python-${Version}.tgz" ]; then
     if ping -c 1 192.168.1.1; then
