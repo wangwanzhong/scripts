@@ -58,7 +58,7 @@ sed -i 's/^#zlib/zlib/g' Modules/Setup
 #./configure --prefix=/opt/py_${Version} --with-ensurepip=install
 
 # with you own openssl
-#./configure --prefix=/opt/py_${Version} --with-ensurepip=install --with-openssl=/opt/openssl
+./configure --prefix=/opt/py_${Version} --with-ensurepip=install --with-openssl=/opt/openssl
 
 # optimizations will increase build time extremely 
 #./configure --prefix=/opt/py_${Version} --with-ensurepip=install --enable-optimizations
