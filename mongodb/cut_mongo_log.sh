@@ -10,4 +10,3 @@ killall -SIGUSR1 mongod
 DATE=$(date -d "7 days ago" +"%Y-%m-%d")
 
 rm -f ${LOGFILE}.${DATE}T*-*-*
-

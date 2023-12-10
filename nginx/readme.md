@@ -64,3 +64,45 @@ echo '* soft nofile 85534
 * hard nproc 65535
 * soft core 20480' >> /etc/security/limits.conf
 ```
+
+### 编译安装 NGINX 找不到 OpenSSL 库
+
+原因是我安装的 openssl-1.0.2k 版本过低，解决办法是下载新版本源码编译安装。
+```
+wget --no-check-certificate https://www.openssl.org/source/old/1.1.1/openssl-1.1.1k.tar.gz
+tar zxf openssl-1.1.1k.tar.gz && cd openssl-1.1.1k
+./config --prefix=/opt/openssl-1.1.1k && make && make install
+
+echo "/usr/local/lib64/" >> /etc/ld.so.conf
+ldconfig
+
+# 如果提示需要 Perl5 则执行 yum install -y perl
+
+```
+
+进入 NGINX 源码根目录编辑文件 auto/lib/openssl/conf
+
+将以下内容
+```
+ 39             CORE_INCS="$CORE_INCS $OPENSSL/.openssl/include"
+ 40             CORE_DEPS="$CORE_DEPS $OPENSSL/.openssl/include/openssl/ssl.h"
+ 41             CORE_LIBS="$CORE_LIBS $OPENSSL/.openssl/lib/libssl.a"
+ 42             CORE_LIBS="$CORE_LIBS $OPENSSL/.openssl/lib/libcrypto.a"
+```
+
+修改为
+```
+            #CORE_INCS="$CORE_INCS $OPENSSL/.openssl/include"
+            #CORE_DEPS="$CORE_DEPS $OPENSSL/.openssl/include/openssl/ssl.h"
+            #CORE_LIBS="$CORE_LIBS $OPENSSL/.openssl/lib/libssl.a"
+            #CORE_LIBS="$CORE_LIBS $OPENSSL/.openssl/lib/libcrypto.a"
+            CORE_INCS="$CORE_INCS $OPENSSL/include"
+            CORE_DEPS="$CORE_DEPS $OPENSSL/include/openssl/ssl.h"
+            CORE_LIBS="$CORE_LIBS $OPENSSL/lib/libssl.a"
+            CORE_LIBS="$CORE_LIBS $OPENSSL/lib/libcrypto.a"
+```
+
+重新编译安装 NGINX
+```
+# 编译 Nginx 时额外指定 --with-openssl=/opt/openssl-1.1.1k
+```

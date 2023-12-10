@@ -13,7 +13,7 @@ fi
 
 /usr/bin/id www || useradd -M www
 
-yum -y install gcc-c++ make pcre-devel openssl-devel
+yum -y install gcc-c++ make pcre-devel openssl openssl-devel
 [ -f "nginx-${version}.tar.gz" ] || wget http://nginx.org/download/nginx-${version}.tar.gz
 
 # install
