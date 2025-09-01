@@ -22,12 +22,16 @@ cd nginx-${version}
 ./configure \
     --prefix=/opt/nginx \
     --user=www \
+	--group=www \
+	--with-pcre \
     --with-http_stub_status_module \
     --with-http_realip_module \
     --with-http_gzip_static_module \
     --with-http_ssl_module \
-    --with-http_v2_module
-
+    --with-http_v2_module \
+	--with-stream \
+	--with-stream_ssl_module \
+	--with-stream_realip_module
 
 make && make install
 
